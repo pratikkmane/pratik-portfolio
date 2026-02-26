@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { HiOutlineMail } from 'react-icons/hi'
 
 function Home() {
   return (
@@ -42,13 +44,13 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        I turn messy data into clear decisions. Passionate about machine learning, 
+        I turn messy data into clear decisions. Passionate about machine learning,
         data visualization, and building intelligent systems that make an impact.
       </motion.p>
 
       {/* CTA Buttons */}
       <motion.div
-        className="flex gap-4"
+        className="flex gap-4 mb-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -65,6 +67,40 @@ function Home() {
         >
           Get In Touch
         </Link>
+      </motion.div>
+
+      {/* Social Icons */}
+      <motion.div
+        className="flex gap-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        <a
+          href="https://github.com/pratikkmane"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-gray-900 transition-colors duration-200"
+          aria-label="GitHub"
+        >
+          <FaGithub size={24} />
+        </a>
+        <a
+          href="https://linkedin.com/in/pratikmane316"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin size={24} />
+        </a>
+        <a
+          href="mailto:pratikkmanee@gmail.com"
+          className="text-gray-400 hover:text-blue-600 transition-colors duration-200"
+          aria-label="Email"
+        >
+          <HiOutlineMail size={24} />
+        </a>
       </motion.div>
 
     </main>
