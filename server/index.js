@@ -3,6 +3,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import contactRoute from './routes/contact.js'
+import humeRoute from './routes/hume.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -13,6 +14,7 @@ app.use(express.json())
 
 // Routes
 app.use('/api/contact', contactRoute)
+app.use('/api/hume', humeRoute)
 
 // Test Route
 app.get('/', (req, res) => {

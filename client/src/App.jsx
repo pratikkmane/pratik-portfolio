@@ -7,6 +7,7 @@ import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 import Experience from './pages/Experience'
+import VoiceAssistant from './components/VoiceAssistant'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/experience" element={<Experience />} />
       </Routes>
       <Footer />
+      <VoiceAssistant />
     </BrowserRouter>
   )
 }
