@@ -7,6 +7,25 @@ function Home() {
   return (
     <main className="min-h-screen flex flex-col justify-center items-center text-center px-6">
 
+      {/* Profile Photo with Ring Animation */}
+      <motion.div
+      className="mb-8 relative flex items-center justify-center"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      >
+      {/* Animated Ring
+      <div className="absolute w-44 h-44 rounded-full border-2 border-blue-400 opacity-40 animate-ping" />
+      <div className="absolute w-40 h-40 rounded-full border-2 border-blue-300 opacity-30 animate-pulse" /> */}
+
+      {/* Photo */}
+      <img
+      src="/src/assets/profile.jpeg"
+      alt="Pratik Mane"
+      className="w-56 h-56 rounded-full object-cover object-top border-4 border-white shadow-xl relative z-10"
+      />
+      </motion.div>
+
       {/* Greeting Tag */}
       <motion.p
         className="text-sm font-medium text-blue-600 tracking-widest uppercase mb-4"

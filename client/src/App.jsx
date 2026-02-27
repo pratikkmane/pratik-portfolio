@@ -8,10 +8,12 @@ import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 import Experience from './pages/Experience'
 import VoiceAssistant from './components/VoiceAssistant'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
