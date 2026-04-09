@@ -20,7 +20,7 @@ function Home() {
 
       {/* Photo */}
       <img
-       src="/profile.jpg"
+       src="/profile.jpeg"
       alt="Pratik Mane"
       className="w-56 h-56 rounded-full object-cover object-top border-4 border-white shadow-xl relative z-10"
       />
