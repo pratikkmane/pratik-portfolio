@@ -102,7 +102,7 @@ function VoiceAssistant() {
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/hume/token')
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/hume/token`)
         const data = await res.json()
         setAccessToken(data.accessToken)
       } catch (err) {
@@ -132,7 +132,10 @@ function VoiceAssistant() {
           </div>
 
           {accessToken ? (
-            <VoiceProvider>
+            <VoiceProvider
+              auth={{ type: 'accessToken', value: accessToken }}
+              configId={import.meta.env.VITE_HUME_CONFIG_ID}
+            >
               <VoiceControls accessToken={accessToken} />
             </VoiceProvider>
           ) : (

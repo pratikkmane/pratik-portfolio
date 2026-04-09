@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
-import profilePhoto from '../assets/profile.jpeg';
 
 function Home() {
   return (
@@ -21,7 +20,7 @@ function Home() {
 
       {/* Photo */}
       <img
-      src={profilePhoto}
+       src="/profile.jpg"
       alt="Pratik Mane"
       className="w-56 h-56 rounded-full object-cover object-top border-4 border-white shadow-xl relative z-10"
       />
