@@ -2,12 +2,20 @@ import { motion } from 'framer-motion'
 
 const projects = [
   {
-    title: 'AI-Based Image Captioning using CNN and BLIP',
-    date: 'Sept 2024 – Dec 2024',
+  title: 'Ames Housing Price Prediction',
+  date: 'Jan 2026 - May 2026',
+  description:
+    'Developed a machine-learning workflow to analyze residential-property features and predict home sale prices using the Ames Housing dataset. Applied data preparation, exploratory analysis, feature engineering, and regression-model evaluation.',
+  tags: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Data Analysis', 'Machine Learning'],
+  github: 'https://github.com/pratikkmane/ames-housing-project',
+  },
+  {
+    title: 'Student Performance Analysis',
+    date: 'Jan 2026 - May 2026',
     description:
-      'Built an AI-driven image captioning system leveraging Convolutional Neural Networks (CNN) for feature extraction and BLIP (Bootstrapping Language-Image Pretraining) for natural language caption generation.',
-    tags: ['Python', 'CNN', 'BLIP', 'Deep Learning', 'NLP'],
-    github: '#',
+      'Built a data-analysis and machine-learning project to examine student-related factors and model academic performance, using preprocessing, exploratory analysis, and predictive modeling to identify meaningful performance patterns.',
+    tags: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Data Visualization', 'Machine Learning'],
+    github: 'https://github.com/pratikkmane/student-performance',
   },
   {
     title: 'Image Processing Toolkit for Edge Detection and Enhancement',
@@ -15,16 +23,33 @@ const projects = [
     description:
       'Developed a Python-based image processing toolkit utilizing OpenCV for advanced edge detection, noise reduction, and image enhancement. Implemented Sobel, Canny, and Gaussian Blurring algorithms to improve visual clarity in medical image datasets.',
     tags: ['Python', 'OpenCV', 'Image Processing', 'Medical Imaging'],
-    github: '#',
+    github: 'https://github.com/pratikkmane/image-processing-project',
   },
   {
-    title: 'Therapeutic VR Simulation — XR4RAP LLC',
-    date: 'June 2025 – Aug 2025',
+    title: 'AI-Based Image Captioning using CNN and BLIP',
+    date: 'Sept 2024 – Dec 2024',
     description:
-      'Engineered a therapeutic VR simulation on Meta Quest with AI-powered narration, ambient music, and dynamic scene timing. Integrated AI API services into Unity using C# scripting with XR Toolkit for locomotion and interaction.',
-    tags: ['Unity', 'C#', 'Meta Quest', 'VR', 'AI Integration', 'XR'],
-    github: '#',
+      'Built an AI-driven image captioning system leveraging Convolutional Neural Networks (CNN) for feature extraction and BLIP (Bootstrapping Language-Image Pretraining) for natural language caption generation.',
+    tags: ['Python', 'CNN', 'BLIP', 'Deep Learning', 'NLP'],
+    github: 'https://github.com/pratikkmane/ImageCaptioning-CNN-BLIP',
   },
+  {
+  title: 'Computer Vision: Edge, Corner, and Shape Detection',
+  date: 'July 2024 - Aug 2024',
+  description:
+    'Built a computer-vision project that implements gradient-based edge detection, Harris corner detection, and Hough Transform techniques to identify boundaries, lines, and circles in images using custom image-processing algorithms.',
+  tags: ['Python', 'NumPy', 'Matplotlib', 'scikit-image', 'SciPy', 'Computer Vision'],
+  github: 'https://github.com/pratikkmane/computer-vision-edge-detection-hough-transform',
+  },
+  {
+    title: 'IRCTC Rail Connect App Redesign',
+    date: 'Feb 2024 - May 2024',
+    description:
+      'Redesigned the IRCTC Rail Connect experience to simplify train-ticket booking, reduce interface clutter, and improve accessibility. Created streamlined flows for train search, PNR updates, train status, sign-up, Google login, and WhatsApp notifications.',
+    tags: ['Figma', 'UX Research', 'UI Design', 'Prototyping', 'User Experience', 'Mobile Design'],
+    github: 'https://github.com/pratikkmane/IRCTC-App-Redesign',
+  },
+  
 ]
 
 function Projects() {
