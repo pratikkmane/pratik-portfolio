@@ -43,11 +43,14 @@ const experiences = [
 
 function Experience() {
   return (
-    <main id="experience" className="max-w-4xl mx-auto px-6 pt-2 pb-48 scroll-mt-20" text-center>
+    <main
+      id="experience"
+      className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
+    >
 
       {/* Heading */}
       <motion.h2
-        className="text-4xl font-bold text-gray-900 mb-4"
+        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -67,24 +70,24 @@ function Experience() {
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
-            className="p-8 border border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-md transition-all duration-200"
+            className="rounded-2xl border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_10px_30px_rgba(37,44,52,0.07)] transition-all duration-200 hover:border-[#b8cde0] hover:shadow-[0_14px_34px_rgba(37,44,52,0.10)] sm:p-7 md:p-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
           >
             {/* Top Row */}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-lg font-bold text-[#1f2937] sm:text-xl">
                   {exp.title}
                 </h3>
-                <p className="text-blue-600 font-medium mt-1">
+                <p className="mt-1 font-medium text-[#1769aa]">
                   {exp.company}
                 </p>
               </div>
               <div className="mt-2 md:mt-0 md:text-right">
-                <p className="text-sm text-gray-400">{exp.date}</p>
-                <span className="inline-block mt-1 text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-full font-medium">
+                <p className="text-sm text-[#8d9298]">{exp.date}</p>
+                <span className="mt-1 inline-block rounded-full bg-[#dce9f3] px-2.5 py-1 text-xs font-medium text-[#1769aa]">
                   {exp.type}
                 </span>
               </div>
@@ -93,8 +96,8 @@ function Experience() {
             {/* Bullet Points */}
             <ul className="space-y-2 mb-5">
               {exp.bullets.map((point, i) => (
-                <li key={i} className="flex gap-3 text-gray-500 text-sm leading-relaxed">
-                  <span className="text-blue-400 mt-1 shrink-0">▸</span>
+                <li key={i} className="flex gap-3 text-sm leading-relaxed text-[#5f6670]">
+                <span className="mt-1 shrink-0 text-[#1769aa]">▸</span>
                   <span>{point}</span>
                 </li>
               ))}
@@ -105,7 +108,7 @@ function Experience() {
               {exp.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-gray-50 text-gray-600 text-xs rounded-full border border-gray-100"
+                  className="rounded-full border border-[#dedbd3] bg-[#f4f3ef] px-3 py-1 text-xs text-[#5f6670]"
                 >
                   {tag}
                 </span>

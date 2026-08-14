@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { HiMenu, HiX } from 'react-icons/hi'
 
 const navLinks = [
   { name: 'Home', href: '#home', id: 'home' },
@@ -11,6 +12,7 @@ const navLinks = [
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState('home')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const sections = navLinks
@@ -39,30 +41,35 @@ function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const handleNavClick = () => {
+    setIsMenuOpen(false)
+  }
+
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white px-6 py-5 md:px-10">
+    <nav className="sticky top-0 z-50 w-full border-b border-[#dedbd3] bg-[#f4f3ef]/95 px-5 py-4 backdrop-blur md:px-10">
       <div className="mx-auto flex max-w-6xl items-center justify-between">
         <a
           href="#home"
-          className="text-xl font-bold tracking-tight text-gray-900"
+          className="text-xl font-bold tracking-tight text-[#1f2937]"
           aria-label="Go to home section"
+          onClick={handleNavClick}
         >
-          Pratik<span className="text-blue-600">.</span>
+          Pratik<span className="text-[#1769aa]">.</span>
         </a>
 
-        <ul className="flex items-center gap-4 overflow-x-auto text-sm md:gap-8">
+        <ul className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id
 
             return (
-              <li key={link.name} className="shrink-0">
+              <li key={link.name}>
                 <a
                   href={link.href}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`font-medium transition-colors duration-200 ${
+                  className={`rounded-md px-1 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? 'text-blue-600'
-                      : 'text-gray-500 hover:text-gray-900'
+                      ? 'text-[#1769aa]'
+                      : 'text-[#5f6670] hover:text-[#1f2937]'
                   }`}
                 >
                   {link.name}
@@ -71,7 +78,44 @@ function Navbar() {
             )
           })}
         </ul>
+
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className="flex h-11 w-11 items-center justify-center rounded-lg border border-[#dedbd3] text-[#1f2937] transition-colors hover:bg-[#eeece6] md:hidden"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+        >
+          {isMenuOpen ? <HiX size={23} /> : <HiMenu size={23} />}
+        </button>
       </div>
+
+      {isMenuOpen && (
+        <div className="mx-auto mt-4 max-w-6xl border-t border-[#dedbd3] pt-3 md:hidden">
+          <ul className="grid grid-cols-2 gap-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id
+
+              return (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    onClick={handleNavClick}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`flex min-h-11 items-center rounded-lg px-4 text-sm font-semibold transition-colors ${
+                      isActive
+                        ? 'bg-[#dce9f3] text-[#1769aa]'
+                        : 'bg-[#fbfaf7] text-[#5f6670] hover:bg-[#eeece6] hover:text-[#1f2937]'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      )}
     </nav>
   )
 }

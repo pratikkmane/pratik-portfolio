@@ -25,11 +25,12 @@ const skillCategories = [
 
 function Skills() {
   return (
-    <main id="skills" className="max-w-4xl mx-auto px-6 pt-2 pb-48 scroll-mt-20" text-center>
-
-      {/* Section Heading */}
+    <main
+      id="skills"
+      className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
+    >
       <motion.h2
-        className="text-4xl font-bold text-gray-900 mb-4"
+        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -38,39 +39,38 @@ function Skills() {
       </motion.h2>
 
       <motion.div
-        className="w-12 h-1 bg-blue-600 mb-10"
+        className="mb-10 h-1 w-12 bg-[#1769aa]"
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
       />
 
-      {/* Skill Cards */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-6">
         {skillCategories.map((group, index) => (
-          <motion.div
-            key={index}
-            className="p-6 border border-gray-100 rounded-2xl hover:border-blue-200 hover:shadow-sm transition-all duration-200"
+          <motion.article
+            key={group.category}
+            className="rounded-2xl border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_10px_30px_rgba(37,44,52,0.07)] transition-all duration-200 hover:border-[#b8cde0] hover:shadow-[0_14px_34px_rgba(37,44,52,0.10)] sm:p-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: Math.min(index * 0.1, 0.4) }}
           >
-            <h3 className="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-4">
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-[#1769aa]">
               {group.category}
             </h3>
+
             <div className="flex flex-wrap gap-2">
               {group.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 bg-gray-50 text-gray-700 text-sm rounded-full border border-gray-100"
+                  className="rounded-full border border-[#dedbd3] bg-[#f4f3ef] px-3 py-1.5 text-sm text-[#4d5560]"
                 >
                   {skill}
                 </span>
               ))}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
-
     </main>
   )
 }

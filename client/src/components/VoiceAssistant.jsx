@@ -44,10 +44,10 @@ function VoiceControls({ accessToken }) {
               ? 'animate-pulse bg-green-500'
               : isConnecting
                 ? 'animate-pulse bg-yellow-400'
-                : 'bg-gray-300'
+                : 'bg-[#b8c0c7]'
           }`}
         />
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-[#5f6670]">
           {isConnected
             ? 'Listening...'
             : isConnecting
@@ -71,8 +71,8 @@ function VoiceControls({ accessToken }) {
                 key={index}
                 className={`rounded-xl px-3 py-2 text-xs ${
                   message.type === 'user_message'
-                    ? 'ml-4 bg-blue-50 text-blue-800'
-                    : 'mr-4 bg-gray-50 text-gray-700'
+                    ? 'ml-4 bg-[#dce9f3] text-[#164d78]'
+                    : 'mr-4 bg-[#f4f3ef] text-[#4d5560]'
                 }`}
               >
                 <span className="mb-0.5 block font-semibold">
@@ -94,7 +94,7 @@ function VoiceControls({ accessToken }) {
             ? 'bg-red-500 hover:bg-red-600'
             : isConnecting
               ? 'cursor-not-allowed bg-yellow-400 opacity-70'
-              : 'bg-blue-600 hover:bg-blue-700'
+              : 'bg-[#1769aa] hover:bg-[#0f5288]'
         }`}
         aria-label={isConnected ? 'Stop AI assistant' : 'Start AI assistant'}
       >
@@ -140,12 +140,12 @@ function VoiceAssistant() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-gray-900/30 p-4 sm:items-center"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-[#1f2937]/35 p-4 backdrop-blur-[2px] sm:items-center"
       role="presentation"
       onMouseDown={() => setIsOpen(false)}
     >
       <section
-        className="w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl"
+        className="w-full max-w-sm rounded-2xl border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-2xl sm:p-6"
         role="dialog"
         aria-modal="true"
         aria-labelledby="voice-assistant-title"
@@ -155,11 +155,11 @@ function VoiceAssistant() {
           <div>
             <h3
               id="voice-assistant-title"
-              className="text-sm font-bold text-gray-900"
+              className="text-sm font-bold text-[#1f2937]"
             >
               Ask me about Pratik
             </h3>
-            <p className="mt-1 text-xs text-gray-400">
+            <p className="mt-1 text-xs text-[#8d9298]">
               AI assistant powered by Hume EVI
             </p>
           </div>
@@ -167,7 +167,7 @@ function VoiceAssistant() {
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
+            className="rounded-full p-2 text-[#5f6670] transition-colors hover:bg-[#eeece6] hover:text-[#1f2937]"
             aria-label="Close AI assistant"
           >
             <IoClose size={20} />
@@ -182,7 +182,7 @@ function VoiceAssistant() {
             <VoiceControls accessToken={accessToken} />
           </VoiceProvider>
         ) : (
-          <p className="py-4 text-center text-sm text-gray-400">
+          <p className="py-4 text-center text-sm text-[#8d9298]">
             Connecting to AI...
           </p>
         )}

@@ -7,14 +7,14 @@ function Contact() {
     email: '',
     message: '',
   })
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [status, setStatus] = useState('idle')
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault()
     setStatus('loading')
 
     try {
@@ -24,25 +24,27 @@ function Contact() {
         body: JSON.stringify(formData),
       })
 
-      const data = await response.json()
-
       if (response.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
       } else {
         setStatus('error')
       }
-    } catch (err) {
+    } catch {
       setStatus('error')
     }
   }
 
-  return (
-    <main id="contact" className="max-w-2xl mx-auto px-6 pt-2 pb-48 scroll-mt-20" text-center>
+  const inputClassName =
+    'w-full rounded-xl border border-[#dedbd3] bg-[#fbfaf7] px-4 py-3 text-sm text-[#1f2937] outline-none transition-colors placeholder:text-[#8d9298] focus:border-[#1769aa] focus:ring-2 focus:ring-[#dce9f3]'
 
-      {/* Heading */}
+  return (
+    <main
+      id="contact"
+      className="mx-auto max-w-3xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
+    >
       <motion.h2
-        className="text-4xl font-bold text-gray-900 mb-4"
+        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -51,122 +53,123 @@ function Contact() {
       </motion.h2>
 
       <motion.div
-        className="w-12 h-1 bg-blue-600 mb-6"
+        className="mb-6 h-1 w-12 bg-[#1769aa]"
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
         transition={{ duration: 0.4, delay: 0.1 }}
       />
 
       <motion.p
-        className="text-gray-500 mb-10 leading-relaxed"
+        className="mb-9 max-w-2xl leading-relaxed text-[#5f6670]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        I'm currently open to new opportunities, collaborations, and interesting
-        conversations. Whether you have a question or just want to say hi — my
-        inbox is always open.
+        I&apos;m currently open to new opportunities, collaborations, and interesting
+        conversations. Whether you have a question or just want to say hi, my inbox
+        is always open.
       </motion.p>
 
-      {/* Success Message */}
       {status === 'success' && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-xl text-sm">
-          ✅ Message sent! I'll get back to you soon.
+        <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
+          Message sent! I&apos;ll get back to you soon.
         </div>
       )}
 
-      {/* Error Message */}
       {status === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
-          ❌ Something went wrong. Please try again or email me directly.
+        <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+          Something went wrong. Please try again or email me directly.
         </div>
       )}
 
-      {/* Contact Form */}
       <motion.form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="rounded-2xl border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_10px_30px_rgba(37,44,52,0.07)] sm:p-7"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            required
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-400 transition-colors"
-          />
-        </div>
+        <div className="space-y-5">
+          <div>
+            <label htmlFor="name" className="mb-2 block text-sm font-semibold text-[#364152]">
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your name"
+              required
+              className={inputClassName}
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-            required
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-400 transition-colors"
-          />
-        </div>
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-semibold text-[#364152]">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your@email.com"
+              required
+              className={inputClassName}
+            />
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Message
-          </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows={5}
-            placeholder="What's on your mind?"
-            required
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-blue-400 transition-colors resize-none"
-          />
-        </div>
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-semibold text-[#364152]">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={6}
+              placeholder="What's on your mind?"
+              required
+              className={`${inputClassName} resize-y`}
+            />
+          </div>
 
-        <button
-          type="submit"
-          disabled={status === 'loading'}
-          className="w-full py-3 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {status === 'loading' ? 'Sending...' : 'Send Message'}
-        </button>
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="flex min-h-12 w-full items-center justify-center rounded-xl bg-[#1769aa] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0f5288] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {status === 'loading' ? 'Sending...' : 'Send Message'}
+          </button>
+        </div>
       </motion.form>
 
-      {/* Direct Links */}
       <motion.div
-        className="mt-12 pt-8 border-t border-gray-100 flex gap-6"
+        className="mt-8 flex flex-col gap-3 border-t border-[#dedbd3] pt-7 text-sm sm:flex-row sm:gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
         <a
           href="mailto:pratikkmanee@gmail.com"
-          className="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+          className="min-h-11 text-[#5f6670] transition-colors hover:text-[#1769aa]"
         >
           pratikkmanee@gmail.com
         </a>
+
         <a
           href="https://linkedin.com/in/pratikmane316"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-gray-500 hover:text-blue-600 transition-colors"
+          className="min-h-11 text-[#5f6670] transition-colors hover:text-[#1769aa]"
         >
           LinkedIn →
         </a>
       </motion.div>
-
     </main>
   )
 }

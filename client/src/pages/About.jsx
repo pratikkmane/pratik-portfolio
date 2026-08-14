@@ -25,11 +25,14 @@ const education = [
 
 function About() {
   return (
-    <main id="about" className="max-w-4xl mx-auto px-6 pt-6 pb-48 scroll-mt-20" text-center>
+    <main
+      id="about"
+      className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
+    >
 
       {/* Section Heading */}
       <motion.h2
-        className="text-4xl font-bold text-gray-900 mb-4"
+        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -46,13 +49,13 @@ function About() {
 
       {/* Bio */}
       <motion.div
-        className="grid md:grid-cols-2 gap-12 items-start"
+        className="grid items-start gap-10 md:grid-cols-2 md:gap-12"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         {/* Text */}
-        <div className="space-y-5 text-gray-500 leading-relaxed">
+        <div className="space-y-5 leading-relaxed text-[#5f6670]">
           <p>
             I'm Pratik Mane, a graduate student pursuing my Master's in Applied 
             Data Science at Indiana University Indianapolis. With a background in 
@@ -72,14 +75,14 @@ function About() {
         </div>
 
         {/* Education */}
-        <div className="-mt-20">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">Education</h3>
+        <div className="md:-mt-14">
+          <h3 className="mb-6 text-lg font-semibold text-[#1f2937]">Education</h3>
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <div key={index} className="border-l-2 border-blue-600 pl-4">
-                <p className="text-sm text-blue-600 font-medium mb-1">{edu.year}</p>
-                <p className="font-semibold text-gray-900">{edu.degree}</p>
-                <p className="text-sm text-gray-400">{edu.school}</p>
+              <div key={index} className="border-l-2 border-[#1769aa] pl-4">
+                <p className="mb-1 text-sm font-medium text-[#1769aa]">{edu.year}</p>
+                <p className="font-semibold text-[#1f2937]">{edu.degree}</p>
+                <p className="text-sm text-[#8d9298]">{edu.school}</p>
               </div>
             ))}
           </div>
