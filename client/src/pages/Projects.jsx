@@ -54,7 +54,7 @@ const projects = [
 
 function Projects() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-24">
+    <main id="projects" className="max-w-4xl mx-auto px-6 pt-2 pb-48 scroll-mt-20" text-center>
 
       {/* Heading */}
       <motion.h2

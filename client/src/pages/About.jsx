@@ -25,7 +25,7 @@ const education = [
 
 function About() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-24">
+    <main id="about" className="max-w-4xl mx-auto px-6 pt-6 pb-48 scroll-mt-20" text-center>
 
       {/* Section Heading */}
       <motion.h2
@@ -72,7 +72,7 @@ function About() {
         </div>
 
         {/* Education */}
-        <div>
+        <div className="-mt-20">
           <h3 className="text-lg font-semibold text-gray-900 mb-6">Education</h3>
           <div className="space-y-6">
             {education.map((edu, index) => (

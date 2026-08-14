@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { VoiceProvider, useVoice, VoiceReadyState } from '@humeai/voice-react'
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
 
-const SYSTEM_PROMPT = `You are an AI assistant representing Pratik Mane's portfolio website. 
-Pratik is a graduate student pursuing MS in Applied Data Science at Indiana University Indianapolis. 
-He has a background in Computer Science and has worked as a Software Engineering Intern at XR4RAP LLC 
-where he built VR simulations on Meta Quest, as a Software Developer at RBK Technologies where he 
-built production websites using Next.js and React, and as a Full Stack Developer Intern at Maharashtra 
-Knowledge Corporation where he built a Digital University platform. His skills include Python, 
-JavaScript, React, Node.js, MongoDB, machine learning, and data visualization. 
+const SYSTEM_PROMPT = `You are an AI assistant representing Pratik Mane's portfolio website.
+Pratik is a graduate student pursuing MS in Applied Data Science at Indiana University Indianapolis.
+He has a background in Computer Science and has worked as a Software Engineering Intern at XR4RAP LLC
+where he built VR simulations on Meta Quest, as a Software Developer at RBK Technologies where he
+built production websites using Next.js and React, and as a Full Stack Developer Intern at Maharashtra
+Knowledge Corporation where he built a Digital University platform. His skills include Python,
+JavaScript, React, Node.js, MongoDB, machine learning, and data visualization.
 Be friendly, concise, and professional. Answer questions about Pratik's background, experience, skills, and projects.`
 
 function VoiceControls({ accessToken }) {
@@ -21,7 +21,10 @@ function VoiceControls({ accessToken }) {
   const handleMicClick = () => {
     if (isConnected) {
       disconnect()
-    } else if (!isConnecting) {
+      return
+    }
+
+    if (!isConnecting) {
       void connect({
         auth: { type: 'accessToken', value: accessToken },
         sessionSettings: {
@@ -33,64 +36,70 @@ function VoiceControls({ accessToken }) {
   }
 
   return (
-    <div className="flex flex-col items-center gap-4 w-full">
-
-      {/* Status Indicator */}
+    <div className="flex w-full flex-col items-center gap-4">
       <div className="flex items-center gap-2">
-        <div className={`w-2 h-2 rounded-full transition-colors ${
-          isConnected ? 'bg-green-500 animate-pulse' :
-          isConnecting ? 'bg-yellow-400 animate-pulse' :
-          'bg-gray-300'
-        }`} />
+        <div
+          className={`h-2 w-2 rounded-full transition-colors ${
+            isConnected
+              ? 'animate-pulse bg-green-500'
+              : isConnecting
+                ? 'animate-pulse bg-yellow-400'
+                : 'bg-gray-300'
+          }`}
+        />
         <span className="text-xs text-gray-500">
-          {isConnected ? 'Listening...' : isConnecting ? 'Connecting...' : 'Click mic to start'}
+          {isConnected
+            ? 'Listening...'
+            : isConnecting
+              ? 'Connecting...'
+              : 'Press the microphone to start'}
         </span>
       </div>
 
-      {/* Message History */}
       {messages.length > 0 && (
-        <div className="w-full max-h-40 overflow-y-auto space-y-2">
-          {messages.slice(-4).map((msg, i) => {
-            if (msg.type === 'user_message' || msg.type === 'assistant_message') {
-              return (
-                <div
-                  key={i}
-                  className={`px-3 py-2 rounded-xl text-xs ${
-                    msg.type === 'user_message'
-                      ? 'bg-blue-50 text-blue-800 ml-4'
-                      : 'bg-gray-50 text-gray-700 mr-4'
-                  }`}
-                >
-                  <span className="font-semibold block mb-0.5">
-                    {msg.type === 'user_message' ? 'You' : 'Pratik AI'}
-                  </span>
-                  {msg.message?.content}
-                </div>
-              )
+        <div className="max-h-40 w-full space-y-2 overflow-y-auto">
+          {messages.slice(-4).map((message, index) => {
+            if (
+              message.type !== 'user_message' &&
+              message.type !== 'assistant_message'
+            ) {
+              return null
             }
-            return null
+
+            return (
+              <div
+                key={index}
+                className={`rounded-xl px-3 py-2 text-xs ${
+                  message.type === 'user_message'
+                    ? 'ml-4 bg-blue-50 text-blue-800'
+                    : 'mr-4 bg-gray-50 text-gray-700'
+                }`}
+              >
+                <span className="mb-0.5 block font-semibold">
+                  {message.type === 'user_message' ? 'You' : 'Pratik AI'}
+                </span>
+                {message.message?.content}
+              </div>
+            )
           })}
         </div>
       )}
 
-      {/* Mic Button */}
       <button
+        type="button"
         onClick={handleMicClick}
         disabled={isConnecting}
-        className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 shadow-lg ${
+        className={`flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lg transition-all duration-200 ${
           isConnected
-            ? 'bg-red-500 hover:bg-red-600 text-white'
+            ? 'bg-red-500 hover:bg-red-600'
             : isConnecting
-            ? 'bg-yellow-400 text-white cursor-not-allowed opacity-70'
-            : 'bg-blue-600 hover:bg-blue-700 text-white'
+              ? 'cursor-not-allowed bg-yellow-400 opacity-70'
+              : 'bg-blue-600 hover:bg-blue-700'
         }`}
+        aria-label={isConnected ? 'Stop AI assistant' : 'Start AI assistant'}
       >
-        {isConnected
-          ? <FaMicrophoneSlash size={20} />
-          : <FaMicrophone size={20} />
-        }
+        {isConnected ? <FaMicrophoneSlash size={20} /> : <FaMicrophone size={20} />}
       </button>
-
     </div>
   )
 }
@@ -100,50 +109,85 @@ function VoiceAssistant() {
   const [accessToken, setAccessToken] = useState(null)
 
   useEffect(() => {
+    const openAssistant = () => setIsOpen(true)
+
+    window.addEventListener('open-voice-assistant', openAssistant)
+
+    return () => {
+      window.removeEventListener('open-voice-assistant', openAssistant)
+    }
+  }, [])
+
+  useEffect(() => {
     const fetchToken = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/hume/token`)
-        const data = await res.json()
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/hume/token`,
+        )
+        const data = await response.json()
         setAccessToken(data.accessToken)
-      } catch (err) {
-        console.error('Failed to fetch Hume token:', err)
+      } catch (error) {
+        console.error('Failed to fetch Hume token:', error)
       }
     }
+
     fetchToken()
   }, [])
 
-  return (
-    <>
-      {/* Floating Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-200 z-50"
-        aria-label="Talk to AI Assistant"
-      >
-        {isOpen ? <IoClose size={22} /> : <FaMicrophone size={18} />}
-      </button>
+  if (!isOpen) {
+    return null
+  }
 
-      {/* Voice Panel */}
-      {isOpen && (
-        <div className="fixed bottom-28 right-8 w-80 bg-white border border-gray-100 rounded-2xl shadow-2xl p-6 z-50">
-          <div className="mb-4">
-            <h3 className="font-bold text-gray-900 text-sm">Ask me about Pratik</h3>
-            <p className="text-xs text-gray-400 mt-1">AI assistant powered by Hume EVI</p>
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-gray-900/30 p-4 sm:items-center"
+      role="presentation"
+      onMouseDown={() => setIsOpen(false)}
+    >
+      <section
+        className="w-full max-w-sm rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="voice-assistant-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <h3
+              id="voice-assistant-title"
+              className="text-sm font-bold text-gray-900"
+            >
+              Ask me about Pratik
+            </h3>
+            <p className="mt-1 text-xs text-gray-400">
+              AI assistant powered by Hume EVI
+            </p>
           </div>
 
-          {accessToken ? (
-            <VoiceProvider
-              auth={{ type: 'accessToken', value: accessToken }}
-              configId={import.meta.env.VITE_HUME_CONFIG_ID}
-            >
-              <VoiceControls accessToken={accessToken} />
-            </VoiceProvider>
-          ) : (
-            <p className="text-sm text-gray-400 text-center py-4">Connecting to AI...</p>
-          )}
+          <button
+            type="button"
+            onClick={() => setIsOpen(false)}
+            className="rounded-full p-1 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
+            aria-label="Close AI assistant"
+          >
+            <IoClose size={20} />
+          </button>
         </div>
-      )}
-    </>
+
+        {accessToken ? (
+          <VoiceProvider
+            auth={{ type: 'accessToken', value: accessToken }}
+            configId={import.meta.env.VITE_HUME_CONFIG_ID}
+          >
+            <VoiceControls accessToken={accessToken} />
+          </VoiceProvider>
+        ) : (
+          <p className="py-4 text-center text-sm text-gray-400">
+            Connecting to AI...
+          </p>
+        )}
+      </section>
+    </div>
   )
 }
 

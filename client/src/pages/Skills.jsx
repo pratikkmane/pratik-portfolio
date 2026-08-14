@@ -25,7 +25,7 @@ const skillCategories = [
 
 function Skills() {
   return (
-    <main className="max-w-4xl mx-auto px-6 py-24">
+    <main id="skills" className="max-w-4xl mx-auto px-6 pt-2 pb-48 scroll-mt-20" text-center>
 
       {/* Section Heading */}
       <motion.h2
