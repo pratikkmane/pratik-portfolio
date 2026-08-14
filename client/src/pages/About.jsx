@@ -57,20 +57,21 @@ function About() {
         {/* Text */}
         <div className="space-y-5 leading-relaxed text-[#5f6670]">
           <p>
-            I'm Pratik Mane, a graduate student pursuing my Master's in Applied 
-            Data Science at Indiana University Indianapolis. With a background in 
-            Computer Science, I bring both engineering rigor and analytical thinking 
-            to every problem I tackle.
+            I'm Pratik Mane, a software engineer with experience across full-stack
+            web development, VR/XR systems, and machine learning. I've built
+            production websites used by real users, real-time systems handling
+            thousands of concurrent connections, and immersive experiences on
+            Meta Quest — and I bring the same engineering rigor to each.
+          </p>  
+          <p>
+            I'm currently deepening my data science and ML skills through a Master's
+            at Indiana University Indianapolis, which sharpens how I think about
+            performance, evaluation, and building systems that hold up under real
+            conditions — not just in a demo.
           </p>
           <p>
-            My passion lies at the intersection of machine learning, data 
-            visualization, and real-world impact. I love building systems that don't 
-            just process data — they tell a story with it.
-          </p>
-          <p>
-            When I'm not coding or analyzing datasets, you'll find me exploring new 
-            tools, reading about AI research, or working on side projects that 
-            challenge me to grow.
+            When I'm not coding, you'll find me exploring new tools, reading about
+            AI research, or working on side projects that push me to grow.
           </p>
         </div>
 

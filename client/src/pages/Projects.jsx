@@ -5,15 +5,15 @@ const projects = [
     title: 'Ames Housing Price Prediction',
     date: 'Jan 2026 – May 2026',
     description:
-      'Developed a machine-learning workflow to analyze residential-property features and predict home sale prices using the Ames Housing dataset. Applied data preparation, exploratory analysis, feature engineering, and regression-model evaluation.',
+      'Built an end-to-end ML pipeline — data ingestion, feature engineering, model training, and evaluation — to predict residential sale prices from the Ames Housing dataset. Focused on a clean, reproducible workflow over any single models accuracy.',
     tags: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Data Analysis', 'Machine Learning'],
     github: 'https://github.com/pratikkmane/ames-housing-project',
   },
   {
-    title: 'Student Performance Analysis',
+    title: 'Student Performance Analysis' ,
     date: 'Jan 2026 – May 2026',
     description:
-      'Built a data-analysis and machine-learning project to examine student-related factors and model academic performance, using preprocessing, exploratory analysis, and predictive modeling to identify meaningful performance patterns.',
+      'Designed a data pipeline to preprocess, explore, and model student-performance data end to end, from raw records through feature engineering to a trained predictive system. Structured for reuse across different target variables.',
     tags: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Data Visualization', 'Machine Learning'],
     github: 'https://github.com/pratikkmane/student-performance',
   },
@@ -29,7 +29,7 @@ const projects = [
     title: 'AI-Based Image Captioning using CNN and BLIP',
     date: 'Sept 2024 – Dec 2024',
     description:
-      'Built an AI-driven image captioning system leveraging Convolutional Neural Networks (CNN) for feature extraction and BLIP for natural-language caption generation.',
+      'Engineered an image-captioning system combining a CNN feature-extraction stage with a BLIP-based language model, wiring the two into a single inference pipeline that takes an image and returns natural-language captions.',
     tags: ['Python', 'CNN', 'BLIP', 'Deep Learning', 'NLP'],
     github: 'https://github.com/pratikkmane/ImageCaptioning-CNN-BLIP',
   },

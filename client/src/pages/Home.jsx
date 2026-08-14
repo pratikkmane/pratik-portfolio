@@ -49,7 +49,7 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        MS Applied Data Science · Indiana University Indianapolis
+        Software Engineer · MS Applied Data Science, IU Indianapolis
       </motion.h2>
 
       <motion.p
@@ -58,8 +58,8 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        I turn messy data into clear decisions. Passionate about machine learning,
-        data visualization, and building intelligent systems that make an impact.
+        Full-stack software engineer with a data science edge. I build things
+        that work, then use data to make them work better.
       </motion.p>
 
       <motion.div
