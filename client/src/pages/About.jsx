@@ -10,17 +10,7 @@ const education = [
     degree: 'MS in Computer Science',
     school: 'Purdue University',
     year: 'Jan 2024 – Dec 2025',
-  },
-  {
-    degree: 'MS in Computer Applications',
-    school: 'Pune University',
-    year: 'June 2020 – May 2022',
-  },
-  {
-    degree: 'Bachelor of Science in Physics',
-    school: 'Pune University',
-    year: 'June 2017 – May 2020',
-  },
+  }
 ]
 
 function About() {

@@ -5,7 +5,6 @@ import Experience from './pages/Experience'
 import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
-import VoiceAssistant from './components/VoiceAssistant'
 
 function App() {
   return (
@@ -20,8 +19,6 @@ function App() {
         <Skills />
         <Contact />
       </main>
-
-      <VoiceAssistant />
     </>
   )
 }

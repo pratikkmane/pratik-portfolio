@@ -1,12 +1,8 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaMicrophone } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 
 function Home() {
-  const openAssistant = () => {
-    window.dispatchEvent(new Event('open-voice-assistant'))
-  }
-
   return (
     <section
       id="home"
@@ -49,7 +45,7 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Software Engineer · MS Applied Data Science, IU Indianapolis
+        Software Engineer · MS Data Science, IU Indianapolis
       </motion.h2>
 
       <motion.p
@@ -68,21 +64,21 @@ function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        <button
-          type="button"
-          onClick={openAssistant}
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1769aa] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0f5288]"
-        >
-          <FaMicrophone size={15} />
-          Talk with my AI assistant
-        </button>
+      <a
+        href="/Resume.pdf"
+        download
+        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1769aa] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0f5288]"
+      >
+        <FaDownload size={15} />
+        Download Resume
+      </a>
 
-        <a
-          href="#contact"
-          className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#dedbd3] bg-[#fbfaf7] px-6 py-3 text-sm font-semibold text-[#364152] transition-colors hover:bg-[#eeece6]"
-        >
-          Get In Touch
-        </a>
+      <a
+        href="#contact"
+        className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#dedbd3] bg-[#fbfaf7] px-6 py-3 text-sm font-semibold text-[#364152] transition-colors hover:bg-[#eeece6]"
+      >
+        Get In Touch
+      </a>
       </motion.div>
 
       <motion.div

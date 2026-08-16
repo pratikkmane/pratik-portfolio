@@ -2,26 +2,28 @@ import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
-import contactRoute from './routes/contact.js'
-import humeRoute from './routes/hume.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// Middleware
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const clientDistPath = path.join(__dirname, '../client/dist')
+
 app.use(cors())
 app.use(express.json())
 
-// Routes
 app.use('/api/contact', contactRoute)
-app.use('/api/hume', humeRoute)
 
-// Test Route
-app.get('/', (req, res) => {
-  res.send('Backend is running ✅')
+app.use(express.static(clientDistPath))
+
+app.get('*', (req, res) => {
+  if (req.originalUrl.startsWith('/api')) return res.status(404).send('API route not found')
+  res.sendFile(path.join(clientDistPath, 'index.html'))
 })
 
-// Connect to MongoDB then start server
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
