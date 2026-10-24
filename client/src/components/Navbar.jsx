@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import ThemeToggle from './ThemeToggle'
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'About', id: 'about' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Skills', id: 'skills' },
+  { name: 'Contact', id: 'contact' },
 ]
 
 function Star({ className }) {
@@ -21,25 +20,54 @@ function Star({ className }) {
   )
 }
 
+function NavLinks({ activeId, className, linkClassName }) {
+  return (
+    <ul className={className}>
+      {navLinks.map((link) => (
+        <li key={link.id} className="shrink-0">
+          <a
+            href={`#${link.id}`}
+            aria-current={activeId === link.id ? 'true' : undefined}
+            className={`${linkClassName} ${
+              activeId === link.id ? 'text-fg' : 'text-muted hover:text-fg'
+            }`}
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [activeId, setActiveId] = useState('')
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    const onKey = (event) => event.key === 'Escape' && setIsOpen(false)
-    window.addEventListener('keydown', onKey)
-    return () => {
-      document.body.style.overflow = ''
-      window.removeEventListener('keydown', onKey)
-    }
-  }, [isOpen])
+    const sections = ['home', ...navLinks.map((link) => link.id)]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible) setActiveId(visible.target.id === 'home' ? '' : visible.target.id)
+      },
+      { rootMargin: '-25% 0px -60% 0px', threshold: 0.01 },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <>
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-white/85 px-5 py-5 backdrop-blur sm:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 bg-bg/85 backdrop-blur">
+      <div className="flex items-center justify-between px-5 py-4 sm:px-8 md:py-5">
         <a
           href="#home"
-          onClick={() => setIsOpen(false)}
+          onClick={() => setActiveId('')}
           className="flex items-center gap-3 font-mono text-sm uppercase tracking-wide"
           aria-label="Go to top"
         >
@@ -47,49 +75,25 @@ function Navbar() {
           Pratik
         </a>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen((open) => !open)}
-          aria-expanded={isOpen}
-          aria-controls="site-menu"
-          className="font-mono text-sm uppercase tracking-wide transition-opacity hover:opacity-60"
-        >
-          {isOpen ? 'Close' : 'Menu'}
-        </button>
-      </header>
+        <div className="flex items-center gap-6 lg:gap-10">
+          <NavLinks
+            activeId={activeId}
+            className="hidden items-center gap-6 md:flex lg:gap-9"
+            linkClassName="font-mono text-sm uppercase tracking-wide transition-colors"
+          />
+          <ThemeToggle />
+        </div>
+      </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.nav
-            id="site-menu"
-            className="fixed inset-0 z-40 flex flex-col justify-center bg-white px-5 sm:px-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ul>
-              {navLinks.map((link, index) => (
-                <motion.li
-                  key={link.name}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: 0.05 * index }}
-                >
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-5xl font-extrabold uppercase leading-[1.05] tracking-tighter transition-opacity hover:opacity-40 sm:text-7xl md:text-8xl"
-                  >
-                    {link.name}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </>
+      {/* Phones: the same links in a swipeable row so no menu tap is needed */}
+      <nav aria-label="Sections" className="md:hidden">
+        <NavLinks
+          activeId={activeId}
+          className="no-scrollbar flex gap-6 overflow-x-auto px-5 pb-3 sm:px-8"
+          linkClassName="block font-mono text-xs uppercase tracking-wide transition-colors"
+        />
+      </nav>
+    </header>
   )
 }
 

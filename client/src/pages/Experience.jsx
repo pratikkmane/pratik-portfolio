@@ -2,30 +2,56 @@ import Reveal from '../components/Reveal'
 
 const experiences = [
   {
+    title: 'Data Engineer',
+    company: 'COMET Lab',
+    date: 'Aug 2026 – Present',
+    type: 'Current',
+    bullets: [
+      'Prevented wrong crime figures by validating against 2021 data and official FBI figures, catching an agency ORI code error that undercounted incidents by nearly 99% and confirming all offense categories within 3-7%.',
+      'Combined separate FBI crime data files into one clean, incident-level dataset in R (dplyr), keeping only the most serious offense per incident so researchers could analyze Indiana crime without double counting.',
+      'Built a population-coverage pipeline joining FBI agency data with U.S. Census estimates across all 92 Indiana counties, finding 62.6% average coverage and 49 counties meeting the 85% coverage threshold.',
+    ],
+    tags: ['R', 'dplyr', 'Data Validation', 'FBI Crime Data', 'U.S. Census'],
+  },
+  {
+    title: 'Backend Developer',
+    company: 'The Polis Center',
+    date: 'Jan 2026 – Aug 2026',
+    type: 'Part-time',
+    bullets: [
+      'Removed the manual work of writing ADA-compliant alt text by building the backend that connects AI vision models to uploaded PDF, PPTX and DOCX files and generates the text automatically for screen readers.',
+      'Built JWT authentication from scratch (FastAPI, SQLAlchemy, bcrypt) so each user\'s documents stay private.',
+      'Built forgot-password and reset-password endpoints backed by a token table with 15-minute expiry and single-use enforcement, managing schema changes via versioned Alembic migrations on PostgreSQL.',
+      'Linked uploaded documents to their owners via a user_id foreign key and built a history endpoint returning a user\'s full document and processing history, enabling secure per-user data retrieval and easy access to past results.',
+      'Collaborated with the lead developer via Git branching, pull requests, and code review; diagnosed and fixed a PDF extraction bug, contributing to a three-strategy image-extraction pipeline for uploaded documents.',
+    ],
+    tags: ['FastAPI', 'SQLAlchemy', 'PostgreSQL', 'Alembic', 'JWT'],
+  },
+  {
     title: 'Software Engineering Intern',
     company: 'XR4RAP LLC',
-    date: 'June 2025 – Aug 2025',
+    date: 'Jun 2025 – Aug 2025',
     type: 'Internship',
     bullets: [
-      'Architected an AI-powered asset pipeline integrating API-based services for ambient music, sound, video, and voice into Unity for a 3-minute pilot VR experience.',
-      'Engineered a therapeutic VR simulation on Meta Quest with AI narration and dynamic scene timing using C# scripting with Unity XR Toolkit.',
-      'Configured XR Origin locomotion and teleportation, resolving camera conflicts and establishing stable interaction boundaries on Meta Quest.',
-      'Authored technical documentation and integration guides for AI service evaluation and Unity pipeline setup.',
+      'Built a therapeutic VR pilot for Meta Quest (C#, Unity XR Toolkit, XR Origin) for guided rehab experiences.',
+      'Integrated AI APIs for narration, music, sound effects and visuals, vetting sources for IP-safe usage.',
+      'Implemented locomotion, teleportation, and interaction systems with timed scenes for guided therapeutic exercises.',
+      'Debugged camera-tracking and UI conflicts, improving user stability and comfort in extended VR sessions.',
     ],
     tags: ['Unity', 'C#', 'Meta Quest', 'VR/XR', 'AI Integration'],
   },
   {
-    title: 'Software Developer',
+    title: 'Software Engineer',
     company: 'RBK Technologies Limited',
-    date: 'Sept 2022 – Dec 2023',
+    date: 'Sep 2022 – Dec 2023',
     type: 'Full-time',
     bullets: [
-      'Designed and prototyped the company\'s primary website in Figma, translating business requirements into responsive UI layouts.',
-      'Developed and deployed the production website using Next.js, React, and Headless UI with optimized performance across desktop and mobile.',
-      'Integrated Google Analytics (GA4) and Tag Manager for traffic monitoring and behavior insights supporting data-driven decisions.',
-      'Reduced page load times by 25% through asset optimization, caching, and cross-functional collaboration with a team of 5.',
+      'Gathered requirements from business and engineering teams and turned them into responsive page structures and reusable components, acting as the technical point of contact from Figma prototype to engineering signoff.',
+      'Built and deployed a responsive Next.js, React and Headless UI website, optimizing rendering performance, accessibility and cross-browser compatibility across desktop and mobile, supporting consistent user engagement.',
+      'Set up Hostinger deployment and GA4 tracking for traffic, user-behavior and content decisions.',
+      'Cut page load times 25% with asset optimization and caching; used Git and GitHub for reviews and releases.',
     ],
-    tags: ['Next.js', 'React', 'Figma', 'Google Analytics', 'Git'],
+    tags: ['Next.js', 'React', 'Headless UI', 'Figma', 'GA4'],
   },
   {
     title: 'Full Stack Developer Intern',
@@ -48,24 +74,24 @@ function Experience() {
         <h2>Experience</h2>
       </Reveal>
 
-      <ul className="border-t border-black">
+      <ul className="border-t border-fg">
         {experiences.map((exp) => (
-          <Reveal as="li" key={exp.title + exp.company} className="border-b border-[#e6e6e6] py-10 md:py-14">
+          <Reveal as="li" key={exp.title + exp.company} className="border-b border-line py-10 md:py-14">
             <div className="grid gap-8 md:grid-cols-[1fr_1.4fr] md:gap-16">
               <div>
-                <p className="mb-4 font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+                <p className="mb-4 font-mono text-xs uppercase tracking-wide text-muted">
                   {exp.date} · {exp.type}
                 </p>
                 <h3 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
                   {exp.title}
                 </h3>
-                <p className="mt-2 text-lg text-[#555]">{exp.company}</p>
+                <p className="mt-2 text-lg text-subtle">{exp.company}</p>
               </div>
 
               <div>
                 <ul className="mb-6 space-y-3">
                   {exp.bullets.map((point) => (
-                    <li key={point} className="flex gap-3 leading-relaxed text-[#444]">
+                    <li key={point} className="flex gap-3 leading-relaxed text-subtle">
                       <span aria-hidden="true" className="mt-[0.15em] font-mono">+</span>
                       <span>{point}</span>
                     </li>
@@ -75,7 +101,7 @@ function Experience() {
                   {exp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full bg-[#f3f3f3] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wide"
+                      className="rounded-full bg-pill px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wide"
                     >
                       {tag}
                     </span>

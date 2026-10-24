@@ -36,9 +36,9 @@ function Contact() {
   }
 
   const inputClassName =
-    'w-full border-0 border-b border-[#cfcfcf] bg-transparent px-0 py-3 text-lg text-black outline-none transition-colors placeholder:text-[#9a9a9a] focus:border-black'
+    'w-full border-0 border-b border-line-strong bg-transparent px-0 py-3 text-lg text-fg outline-none transition-colors placeholder:text-muted focus:border-fg'
   const labelClassName =
-    'mb-1 block font-mono text-xs uppercase tracking-wide text-[#6b6b6b]'
+    'mb-1 block font-mono text-xs uppercase tracking-wide text-muted'
 
   return (
     <section id="contact" className="px-5 pb-10 pt-20 sm:px-8 md:pt-32">
@@ -53,7 +53,7 @@ function Contact() {
             <br />
             together
           </p>
-          <p className="mt-8 max-w-md leading-relaxed text-[#555]">
+          <p className="mt-8 max-w-md leading-relaxed text-subtle">
             I&apos;m currently open to new opportunities, collaborations, and
             interesting conversations. Whether you have a question or just want
             to say hi, my inbox is always open.
@@ -75,13 +75,13 @@ function Contact() {
 
         <Reveal delay={0.1}>
           {status === 'success' && (
-            <div role="status" className="mb-6 rounded-2xl bg-[#f3f3f3] p-4 text-sm">
+            <div role="status" className="mb-6 rounded-2xl bg-pill p-4 text-sm">
               Message sent! I&apos;ll get back to you soon.
             </div>
           )}
 
           {status === 'error' && (
-            <div role="alert" className="mb-6 rounded-2xl bg-[#fde8e6] p-4 text-sm text-[#a3271c]">
+            <div role="alert" className="mb-6 rounded-2xl bg-red-500/10 p-4 text-sm text-red-500">
               Something went wrong. Please try again or email me directly.
             </div>
           )}
@@ -132,7 +132,7 @@ function Contact() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full rounded-full bg-black px-6 py-4 font-mono text-xs uppercase tracking-wide text-white transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-40"
+              className="w-full rounded-full bg-fg px-6 py-4 font-mono text-xs uppercase tracking-wide text-bg transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {status === 'loading' ? 'Sending...' : 'Send Message →'}
             </button>

@@ -5,25 +5,50 @@
   --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-:root {
-  --page-bg: #ffffff;
-  --text-strong: #000000;
-  --text-muted: #6b6b6b;
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --fg: #000000;
+  --muted: #6b6b6b;
+  --subtle: #555555;
   --line: #e6e6e6;
-  --pill-bg: #f3f3f3;
+  --line-strong: #cfcfcf;
+  --pill: #f3f3f3;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --fg: #ffffff;
+  --muted: #9a9a9a;
+  --subtle: #b8b8b8;
+  --line: #262626;
+  --line-strong: #3d3d3d;
+  --pill: #171717;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-pill: var(--pill);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
-  background: var(--page-bg);
+  scroll-padding-top: 7.5rem;
+  background: var(--bg);
 }
 
 body {
   min-width: 320px;
   margin: 0;
-  background: var(--page-bg);
-  color: var(--text-strong);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -33,8 +58,22 @@ body {
 }
 
 ::selection {
-  background: #000;
-  color: #fff;
+  background: var(--fg);
+  color: var(--bg);
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 button,
