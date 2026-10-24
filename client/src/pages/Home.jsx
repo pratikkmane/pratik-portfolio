@@ -10,13 +10,15 @@ function Home() {
   return (
     <section
       id="home"
-      className="flex min-h-[82svh] flex-col items-center justify-center px-5 pb-16 pt-36 text-center sm:px-8 md:pt-32"
+      className="flex min-h-[82svh] flex-col items-center justify-center px-5 pb-16 pt-32 text-center sm:px-8 md:pt-28"
     >
       <motion.img
         {...fade(0)}
-        src="/profile.jpeg"
+        src="/hero.jpg"
         alt="Pratik Mane"
-        className="mb-7 h-28 w-28 rounded-full border border-line-strong object-cover object-top sm:h-32 sm:w-32"
+        width="900"
+        height="1350"
+        className="mb-8 h-[17.5rem] w-56 rounded-[2rem] border border-line-strong object-cover object-[50%_15%] sm:h-[20rem] sm:w-64 md:h-[23rem] md:w-72"
       />
 
       <motion.p

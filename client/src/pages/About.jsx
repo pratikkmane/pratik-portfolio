@@ -5,11 +5,13 @@ const education = [
     degree: 'Master of Science in Data Science',
     school: 'Indiana University',
     year: 'Expected Dec 2026',
+    logo: { light: '/logos/iu-crimson.png', dark: '/logos/iu-white.png', size: 'h-10' },
   },
   {
     degree: 'Master of Science in Computer Science',
     school: 'Purdue University',
     year: 'Jan 2024 – Dec 2025',
+    logo: { light: '/logos/purdue-p.png', dark: '/logos/purdue-p-rev.png', size: 'h-7' },
   },
 ]
 
@@ -47,21 +49,46 @@ function About() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-muted">
-            Education
-          </h3>
-          <ul className="divide-y divide-line border-y border-line">
-            {education.map((edu) => (
-              <li key={edu.degree} className="py-6">
-                <p className="mb-2 font-mono text-xs uppercase tracking-wide text-muted">
-                  {edu.year}
-                </p>
-                <p className="text-xl font-semibold tracking-tight">{edu.degree}</p>
-                <p className="text-subtle">{edu.school}</p>
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={0.1} className="space-y-12">
+          <img
+            src="/about.jpg"
+            alt="Pratik smiling in front of a lit Ferris wheel at dusk"
+            width="900"
+            height="900"
+            loading="lazy"
+            className="aspect-square w-full max-w-md rounded-3xl object-cover object-[50%_30%] md:max-w-none"
+          />
+
+          <div>
+            <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-muted">
+              Education
+            </h3>
+            <ul className="divide-y divide-line border-y border-line">
+              {education.map((edu) => (
+                <li key={edu.degree} className="flex items-center gap-5 py-6">
+                  <span className="flex h-12 w-16 shrink-0 items-center justify-center">
+                    <img
+                      src={edu.logo.light}
+                      alt=""
+                      className={`${edu.logo.size} w-auto object-contain dark:hidden`}
+                    />
+                    <img
+                      src={edu.logo.dark}
+                      alt=""
+                      className={`${edu.logo.size} hidden w-auto object-contain dark:block`}
+                    />
+                  </span>
+                  <div>
+                    <p className="mb-1 font-mono text-xs uppercase tracking-wide text-muted">
+                      {edu.year}
+                    </p>
+                    <p className="text-xl font-semibold tracking-tight">{edu.degree}</p>
+                    <p className="text-subtle">{edu.school}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </div>
     </section>
