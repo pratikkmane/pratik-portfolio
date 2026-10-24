@@ -2,12 +2,12 @@ import Reveal from '../components/Reveal'
 
 const education = [
   {
-    degree: 'MS in Applied Data Science',
+    degree: 'Master of Science in Data Science',
     school: 'Indiana University',
-    year: 'Jan 2026 – Present',
+    year: 'Expected Dec 2026',
   },
   {
-    degree: 'MS in Computer Science',
+    degree: 'Master of Science in Computer Science',
     school: 'Purdue University',
     year: 'Jan 2024 – Dec 2025',
   },

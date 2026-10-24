@@ -2,24 +2,28 @@ import Reveal from '../components/Reveal'
 
 const skillCategories = [
   {
-    category: 'Programming Languages',
-    skills: ['Python', 'JavaScript', 'C/C++', 'Java', 'C#', 'SQL', 'R', 'HTML', 'CSS'],
+    category: 'Languages',
+    skills: ['Python', 'R', 'C++', 'Java', 'JavaScript', 'C#', 'SQL', 'HTML', 'CSS'],
   },
   {
-    category: 'Frameworks & Libraries',
-    skills: ['React', 'Next.js', 'Node.js', 'Vue.js', 'Express', 'Pandas', 'NumPy', 'Matplotlib'],
+    category: 'Backend & APIs',
+    skills: ['REST APIs', 'Node.js', 'JWT/OAuth', 'Express'],
+  },
+  {
+    category: 'Data and Cloud',
+    skills: ['Airflow', 'Kafka', 'dbt', 'BigQuery', 'Google Cloud Storage', 'Docker', 'Terraform', 'AWS', 'Databricks'],
+  },
+  {
+    category: 'Frameworks',
+    skills: ['React', 'Next.js', 'Vue.js'],
   },
   {
     category: 'Databases',
-    skills: ['MongoDB', 'MySQL'],
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
   },
   {
-    category: 'AI & Machine Learning',
-    skills: ['OpenCV', 'CNN', 'BLIP', 'Image Processing', 'scikit-learn'],
-  },
-  {
-    category: 'Tools & Platforms',
-    skills: ['Git', 'GitHub', 'Figma', 'Power BI', 'Google Analytics', 'Google Tag Manager', 'Unity', 'Jupyter Notebook'],
+    category: 'Tools and Platforms',
+    skills: ['Git', 'GitHub', 'RStudio', 'Figma', 'Google Analytics', 'Power BI', 'Quarto'],
   },
 ]
 
