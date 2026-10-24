@@ -1,8 +1,9 @@
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Home from './pages/Home'
+import Projects from './pages/Projects'
 import About from './pages/About'
 import Experience from './pages/Experience'
-import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 
@@ -13,12 +14,14 @@ function App() {
 
       <main>
         <Home />
+        <Projects />
         <About />
         <Experience />
-        <Projects />
         <Skills />
         <Contact />
       </main>
+
+      <Footer />
     </>
   )
 }

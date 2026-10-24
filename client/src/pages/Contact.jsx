@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import Reveal from '../components/Reveal'
 import { useState } from 'react'
 
 function Contact() {
@@ -36,141 +36,110 @@ function Contact() {
   }
 
   const inputClassName =
-    'w-full rounded-xl border border-[#dedbd3] bg-[#fbfaf7] px-4 py-3 text-sm text-[#1f2937] outline-none transition-colors placeholder:text-[#8d9298] focus:border-[#1769aa] focus:ring-2 focus:ring-[#dce9f3]'
+    'w-full border-0 border-b border-[#cfcfcf] bg-transparent px-0 py-3 text-lg text-black outline-none transition-colors placeholder:text-[#9a9a9a] focus:border-black'
+  const labelClassName =
+    'mb-1 block font-mono text-xs uppercase tracking-wide text-[#6b6b6b]'
 
   return (
-    <main
-      id="contact"
-      className="mx-auto max-w-3xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
-    >
-      <motion.h2
-        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Get In Touch
-      </motion.h2>
+    <section id="contact" className="px-5 pb-10 pt-20 sm:px-8 md:pt-32">
+      <Reveal className="mb-10 font-mono text-xs uppercase tracking-wide">
+        <h2>Contact</h2>
+      </Reveal>
 
-      <motion.div
-        className="mb-6 h-1 w-12 bg-[#1769aa]"
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 1, scaleX: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-      />
-
-      <motion.p
-        className="mb-9 max-w-2xl leading-relaxed text-[#5f6670]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        I&apos;m currently open to new opportunities, collaborations, and interesting
-        conversations. Whether you have a question or just want to say hi, my inbox
-        is always open.
-      </motion.p>
-
-      {status === 'success' && (
-        <div className="mb-6 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-          Message sent! I&apos;ll get back to you soon.
-        </div>
-      )}
-
-      {status === 'error' && (
-        <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
-          Something went wrong. Please try again or email me directly.
-        </div>
-      )}
-
-      <motion.form
-        onSubmit={handleSubmit}
-        className="rounded-2xl border border-[#dedbd3] bg-[#fbfaf7] p-5 shadow-[0_10px_30px_rgba(37,44,52,0.07)] sm:p-7"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        <div className="space-y-5">
-          <div>
-            <label htmlFor="name" className="mb-2 block text-sm font-semibold text-[#364152]">
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Your name"
-              required
-              className={inputClassName}
-            />
+      <div className="grid gap-14 md:grid-cols-[1.2fr_1fr] md:gap-20">
+        <Reveal>
+          <p className="text-[clamp(2.5rem,7vw,6rem)] font-black uppercase leading-[0.92] tracking-[-0.03em]">
+            Let&apos;s work
+            <br />
+            together
+          </p>
+          <p className="mt-8 max-w-md leading-relaxed text-[#555]">
+            I&apos;m currently open to new opportunities, collaborations, and
+            interesting conversations. Whether you have a question or just want
+            to say hi, my inbox is always open.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 font-mono text-xs uppercase tracking-wide">
+            <a href="mailto:pratikkmanee@gmail.com" className="transition-opacity hover:opacity-50">
+              pratikkmanee@gmail.com ↗
+            </a>
+            <a
+              href="https://linkedin.com/in/pratikmane316"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-50"
+            >
+              LinkedIn ↗
+            </a>
           </div>
+        </Reveal>
 
-          <div>
-            <label htmlFor="email" className="mb-2 block text-sm font-semibold text-[#364152]">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="your@email.com"
-              required
-              className={inputClassName}
-            />
-          </div>
+        <Reveal delay={0.1}>
+          {status === 'success' && (
+            <div role="status" className="mb-6 rounded-2xl bg-[#f3f3f3] p-4 text-sm">
+              Message sent! I&apos;ll get back to you soon.
+            </div>
+          )}
 
-          <div>
-            <label htmlFor="message" className="mb-2 block text-sm font-semibold text-[#364152]">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={6}
-              placeholder="What's on your mind?"
-              required
-              className={`${inputClassName} resize-y`}
-            />
-          </div>
+          {status === 'error' && (
+            <div role="alert" className="mb-6 rounded-2xl bg-[#fde8e6] p-4 text-sm text-[#a3271c]">
+              Something went wrong. Please try again or email me directly.
+            </div>
+          )}
 
-          <button
-            type="submit"
-            disabled={status === 'loading'}
-            className="flex min-h-12 w-full items-center justify-center rounded-xl bg-[#1769aa] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0f5288] disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {status === 'loading' ? 'Sending...' : 'Send Message'}
-          </button>
-        </div>
-      </motion.form>
+          <form onSubmit={handleSubmit} className="space-y-7">
+            <div>
+              <label htmlFor="name" className={labelClassName}>Name</label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                required
+                className={inputClassName}
+              />
+            </div>
 
-      <motion.div
-        className="mt-8 flex flex-col gap-3 border-t border-[#dedbd3] pt-7 text-sm sm:flex-row sm:gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
-        <a
-          href="mailto:pratikkmanee@gmail.com"
-          className="min-h-11 text-[#5f6670] transition-colors hover:text-[#1769aa]"
-        >
-          pratikkmanee@gmail.com
-        </a>
+            <div>
+              <label htmlFor="email" className={labelClassName}>Email</label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="your@email.com"
+                required
+                className={inputClassName}
+              />
+            </div>
 
-        <a
-          href="https://linkedin.com/in/pratikmane316"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="min-h-11 text-[#5f6670] transition-colors hover:text-[#1769aa]"
-        >
-          LinkedIn →
-        </a>
-      </motion.div>
-    </main>
+            <div>
+              <label htmlFor="message" className={labelClassName}>Message</label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={5}
+                placeholder="What's on your mind?"
+                required
+                className={`${inputClassName} resize-y`}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full rounded-full bg-black px-6 py-4 font-mono text-xs uppercase tracking-wide text-white transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              {status === 'loading' ? 'Sending...' : 'Send Message →'}
+            </button>
+          </form>
+        </Reveal>
+      </div>
+    </section>
   )
 }
 
