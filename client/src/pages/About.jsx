@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import Reveal from '../components/Reveal'
 
 const education = [
   {
@@ -10,77 +10,61 @@ const education = [
     degree: 'MS in Computer Science',
     school: 'Purdue University',
     year: 'Jan 2024 – Dec 2025',
-  }
+  },
 ]
 
 function About() {
   return (
-    <main
-      id="about"
-      className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-10 pb-40 sm:px-6 md:pt-12 md:pb-48"
-    >
+    <section id="about" className="px-5 pb-24 pt-28 sm:px-8 md:pt-40">
+      <Reveal className="mb-10 font-mono text-xs uppercase tracking-wide">
+        <h2>About</h2>
+      </Reveal>
 
-      {/* Section Heading */}
-      <motion.h2
-        className="mb-4 text-3xl font-bold tracking-tight text-[#1f2937] sm:text-4xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        About Me
-      </motion.h2>
-
-      <motion.div
-        className="w-12 h-1 bg-blue-600 mb-10"
-        initial={{ opacity: 0, scaleX: 0 }}
-        animate={{ opacity: 1, scaleX: 1 }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-      />
-
-      {/* Bio */}
-      <motion.div
-        className="grid items-start gap-10 md:grid-cols-2 md:gap-12"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        {/* Text */}
-        <div className="space-y-5 leading-relaxed text-[#5f6670]">
-          <p>
-            I'm Pratik Mane, a software engineer with experience across full-stack
-            web development, VR/XR systems, and machine learning. I've built
-            production websites used by real users, real-time systems handling
-            thousands of concurrent connections, and immersive experiences on
-            Meta Quest — and I bring the same engineering rigor to each.
-          </p>  
-          <p>
-            I'm currently deepening my data science and ML skills through a Master's
-            at Indiana University Indianapolis, which sharpens how I think about
-            performance, evaluation, and building systems that hold up under real
-            conditions — not just in a demo.
+      <div className="grid gap-14 md:grid-cols-[1.6fr_1fr] md:gap-20">
+        <Reveal className="space-y-7">
+          <p className="text-[clamp(1.6rem,3.4vw,2.75rem)] font-medium leading-[1.12] tracking-tight">
+            I&apos;m Pratik Mane, a software engineer with experience across
+            full-stack web development, VR/XR systems, and machine learning.
           </p>
-          <p>
-            When I'm not coding, you'll find me exploring new tools, reading about
-            AI research, or working on side projects that push me to grow.
-          </p>
-        </div>
-
-        {/* Education */}
-        <div className="md:-mt-14">
-          <h3 className="mb-6 text-lg font-semibold text-[#1f2937]">Education</h3>
-          <div className="space-y-6">
-            {education.map((edu, index) => (
-              <div key={index} className="border-l-2 border-[#1769aa] pl-4">
-                <p className="mb-1 text-sm font-medium text-[#1769aa]">{edu.year}</p>
-                <p className="font-semibold text-[#1f2937]">{edu.degree}</p>
-                <p className="text-sm text-[#8d9298]">{edu.school}</p>
-              </div>
-            ))}
+          <div className="max-w-2xl space-y-5 text-base leading-relaxed text-[#555] sm:text-lg">
+            <p>
+              I&apos;ve built production websites used by real users, real-time
+              systems handling thousands of concurrent connections, and immersive
+              experiences on Meta Quest — and I bring the same engineering rigor
+              to each.
+            </p>
+            <p>
+              I&apos;m currently deepening my data science and ML skills through a
+              Master&apos;s at Indiana University Indianapolis, which sharpens how
+              I think about performance, evaluation, and building systems that
+              hold up under real conditions — not just in a demo.
+            </p>
+            <p>
+              When I&apos;m not coding, you&apos;ll find me exploring new tools,
+              reading about AI research, or working on side projects that push me
+              to grow.
+            </p>
           </div>
-        </div>
-      </motion.div>
+        </Reveal>
 
-    </main>
+        <Reveal delay={0.1}>
+          <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+            Education
+          </h3>
+          <ul className="divide-y divide-[#e6e6e6] border-y border-[#e6e6e6]">
+            {education.map((edu) => (
+              <li key={edu.degree} className="py-6">
+                <p className="mb-2 font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+                  {edu.year}
+                </p>
+                <p className="text-xl font-semibold tracking-tight">{edu.degree}</p>
+                <p className="text-[#555]">{edu.school}</p>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
   )
 }
 

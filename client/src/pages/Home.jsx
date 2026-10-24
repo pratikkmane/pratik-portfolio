@@ -1,118 +1,55 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa'
-import { HiOutlineMail } from 'react-icons/hi'
+
+const fade = (delay) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, delay },
+})
 
 function Home() {
   return (
     <section
       id="home"
-      className="flex min-h-[calc(100svh-73px)] scroll-mt-20 flex-col items-center justify-center px-5 py-16 text-center sm:px-6 md:py-20"
+      className="flex min-h-[78svh] flex-col items-center justify-center px-5 pb-16 pt-32 text-center sm:px-8"
     >
-      <motion.div
-        className="relative mb-7 flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.88 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <img
-          src="/profile.jpeg"
-          alt="Pratik Mane"
-          className="relative z-10 h-36 w-36 rounded-full border-4 border-[#fbfaf7] object-cover object-top shadow-[0_10px_30px_rgba(37,44,52,0.14)] sm:h-44 sm:w-44"
-        />
-      </motion.div>
-
       <motion.p
-        className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-[#1769aa] sm:text-sm"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        {...fade(0)}
+        className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-wide text-[#555] sm:text-sm"
       >
-        Hi, I&apos;m
+        <span className="h-2.5 w-2.5 rounded-full bg-black" />
+        Open to new opportunities
       </motion.p>
 
       <motion.h1
-        className="mb-4 text-4xl font-bold tracking-tight text-[#1f2937] sm:text-5xl md:text-6xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        {...fade(0.1)}
+        className="text-[clamp(3.25rem,13vw,10rem)] font-black uppercase leading-[0.88] tracking-[-0.03em]"
       >
-        Pratik Mane
+        Software
+        <br />
+        Engineer
       </motion.h1>
 
-      <motion.h2
-        className="mb-6 max-w-3xl text-lg font-medium text-[#5f6670] sm:text-xl md:text-2xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        Software Engineer · MS Data Science, IU Indianapolis
-      </motion.h2>
-
       <motion.p
-        className="mb-9 max-w-xl text-base leading-relaxed text-[#6d737b]"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        {...fade(0.25)}
+        className="mt-8 max-w-xl text-base leading-relaxed text-[#555] sm:text-lg"
       >
         Full-stack software engineer with a data science edge. I build things
         that work, then use data to make them work better.
       </motion.p>
 
-      <motion.div
-        className="mb-8 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:items-center"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-      <a
-        href="/Resume.pdf"
-        download
-        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#1769aa] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0f5288]"
-      >
-        <FaDownload size={15} />
-        Download Resume
-      </a>
-
-      <a
-        href="#contact"
-        className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#dedbd3] bg-[#fbfaf7] px-6 py-3 text-sm font-semibold text-[#364152] transition-colors hover:bg-[#eeece6]"
-      >
-        Get In Touch
-      </a>
-      </motion.div>
-
-      <motion.div
-        className="flex items-center gap-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
+      <motion.div {...fade(0.35)} className="mt-9 flex flex-wrap justify-center gap-3">
         <a
-          href="https://github.com/pratikkmane"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-md p-2 text-[#7b828b] transition-colors hover:text-[#1f2937]"
-          aria-label="GitHub"
+          href="/Resume.pdf"
+          download
+          className="rounded-full bg-black px-6 py-3 font-mono text-xs uppercase tracking-wide text-white transition-opacity hover:opacity-70"
         >
-          <FaGithub size={23} />
+          Download Resume ↓
         </a>
-
         <a
-          href="https://linkedin.com/in/pratikmane316"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-md p-2 text-[#7b828b] transition-colors hover:text-[#1769aa]"
-          aria-label="LinkedIn"
+          href="#contact"
+          className="rounded-full bg-[#f3f3f3] px-6 py-3 font-mono text-xs uppercase tracking-wide transition-colors hover:bg-[#e6e6e6]"
         >
-          <FaLinkedin size={23} />
-        </a>
-
-        <a
-          href="mailto:pratikkmanee@gmail.com"
-          className="rounded-md p-2 text-[#7b828b] transition-colors hover:text-[#1769aa]"
-          aria-label="Email"
-        >
-          <HiOutlineMail size={23} />
+          Get in touch
         </a>
       </motion.div>
     </section>
