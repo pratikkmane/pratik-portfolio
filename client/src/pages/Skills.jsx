@@ -30,20 +30,20 @@ function Skills() {
         <h2>Skills</h2>
       </Reveal>
 
-      <dl className="border-t border-black">
+      <dl className="border-t border-fg">
         {skillCategories.map((group) => (
           <Reveal
             key={group.category}
-            className="grid gap-4 border-b border-[#e6e6e6] py-8 md:grid-cols-[1fr_2fr] md:gap-16"
+            className="grid gap-4 border-b border-line py-8 md:grid-cols-[1fr_2fr] md:gap-16"
           >
-            <dt className="font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+            <dt className="font-mono text-xs uppercase tracking-wide text-muted">
               {group.category}
             </dt>
             <dd className="flex flex-wrap gap-2">
               {group.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="rounded-full bg-[#f3f3f3] px-4 py-2 text-sm font-medium"
+                  className="rounded-full bg-pill px-4 py-2 text-sm font-medium"
                 >
                   {skill}
                 </span>

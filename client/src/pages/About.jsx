@@ -26,7 +26,7 @@ function About() {
             I&apos;m Pratik Mane, a software engineer with experience across
             full-stack web development, VR/XR systems, and machine learning.
           </p>
-          <div className="max-w-2xl space-y-5 text-base leading-relaxed text-[#555] sm:text-lg">
+          <div className="max-w-2xl space-y-5 text-base leading-relaxed text-subtle sm:text-lg">
             <p>
               I&apos;ve built production websites used by real users, real-time
               systems handling thousands of concurrent connections, and immersive
@@ -48,17 +48,17 @@ function About() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+          <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-muted">
             Education
           </h3>
-          <ul className="divide-y divide-[#e6e6e6] border-y border-[#e6e6e6]">
+          <ul className="divide-y divide-line border-y border-line">
             {education.map((edu) => (
               <li key={edu.degree} className="py-6">
-                <p className="mb-2 font-mono text-xs uppercase tracking-wide text-[#6b6b6b]">
+                <p className="mb-2 font-mono text-xs uppercase tracking-wide text-muted">
                   {edu.year}
                 </p>
                 <p className="text-xl font-semibold tracking-tight">{edu.degree}</p>
-                <p className="text-[#555]">{edu.school}</p>
+                <p className="text-subtle">{edu.school}</p>
               </li>
             ))}
           </ul>

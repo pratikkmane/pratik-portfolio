@@ -7,12 +7,12 @@ const links = [
 function Footer() {
   return (
     <footer className="flex flex-col gap-6 px-5 pb-8 pt-16 font-mono text-xs uppercase tracking-wide sm:px-8 md:flex-row md:items-end md:justify-between">
-      <div className="space-y-2 text-[#6b6b6b]">
+      <div className="space-y-2 text-muted">
         <p>
-          Portfolio of <span className="text-black">Pratik Mane</span>
+          Portfolio of <span className="text-fg">Pratik Mane</span>
         </p>
         <p>
-          © 2026 · Built with <span className="text-black">React</span>
+          © 2026 · Built with <span className="text-fg">React</span>
         </p>
       </div>
 
