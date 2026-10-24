@@ -5,13 +5,13 @@ const education = [
     degree: 'Master of Science in Data Science',
     school: 'Indiana University',
     year: 'Expected Dec 2026',
-    logo: { light: '/logos/iu-crimson.png', dark: '/logos/iu-white.png', size: 'h-10' },
+    logo: { light: '/logos/iu-crimson.png', dark: '/logos/iu-white.png', size: 'h-12' },
   },
   {
     degree: 'Master of Science in Computer Science',
     school: 'Purdue University',
     year: 'Jan 2024 – Dec 2025',
-    logo: { light: '/logos/purdue-p.png', dark: '/logos/purdue-p-rev.png', size: 'h-7' },
+    logo: { light: '/logos/purdue-p.png', dark: '/logos/purdue-p-rev.png', size: 'h-9' },
   },
 ]
 
@@ -22,8 +22,8 @@ function About() {
         <h2>About</h2>
       </Reveal>
 
-      <div className="grid gap-14 md:grid-cols-[1.6fr_1fr] md:gap-20">
-        <Reveal className="space-y-7">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="space-y-7 lg:col-span-7">
           <p className="text-[clamp(1.6rem,3.4vw,2.75rem)] font-medium leading-[1.12] tracking-tight">
             I&apos;m Pratik Mane, a software engineer with experience across
             full-stack web development, VR/XR systems, and machine learning.
@@ -49,48 +49,57 @@ function About() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="space-y-12">
+        {/* The photo stretches to the height of the text beside it */}
+        <Reveal
+          delay={0.1}
+          className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] lg:col-span-5 lg:mx-0 lg:aspect-auto lg:max-w-none"
+        >
           <img
             src="/about.jpg"
             alt="Pratik smiling in front of a lit Ferris wheel at dusk"
-            width="900"
-            height="900"
+            width="1227"
+            height="1227"
             loading="lazy"
-            className="aspect-square w-full max-w-md rounded-3xl object-cover object-[50%_30%] md:max-w-none"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_35%]"
           />
-
-          <div>
-            <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-muted">
-              Education
-            </h3>
-            <ul className="divide-y divide-line border-y border-line">
-              {education.map((edu) => (
-                <li key={edu.degree} className="flex items-center gap-5 py-6">
-                  <span className="flex h-12 w-16 shrink-0 items-center justify-center">
-                    <img
-                      src={edu.logo.light}
-                      alt=""
-                      className={`${edu.logo.size} w-auto object-contain dark:hidden`}
-                    />
-                    <img
-                      src={edu.logo.dark}
-                      alt=""
-                      className={`${edu.logo.size} hidden w-auto object-contain dark:block`}
-                    />
-                  </span>
-                  <div>
-                    <p className="mb-1 font-mono text-xs uppercase tracking-wide text-muted">
-                      {edu.year}
-                    </p>
-                    <p className="text-xl font-semibold tracking-tight">{edu.degree}</p>
-                    <p className="text-subtle">{edu.school}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
         </Reveal>
       </div>
+
+      <Reveal className="mt-20 md:mt-28">
+        <h3 className="mb-6 font-mono text-xs uppercase tracking-wide text-muted">
+          Education
+        </h3>
+        <ul className="grid gap-4 md:grid-cols-2">
+          {education.map((edu) => (
+            <li
+              key={edu.degree}
+              className="flex items-center gap-5 rounded-3xl border border-line p-6 sm:p-7"
+            >
+              <span className="flex h-16 w-20 shrink-0 items-center justify-center rounded-2xl bg-pill">
+                <img
+                  src={edu.logo.light}
+                  alt=""
+                  className={`${edu.logo.size} w-auto object-contain dark:hidden`}
+                />
+                <img
+                  src={edu.logo.dark}
+                  alt=""
+                  className={`${edu.logo.size} hidden w-auto object-contain dark:block`}
+                />
+              </span>
+              <div>
+                <p className="mb-1 font-mono text-xs uppercase tracking-wide text-muted">
+                  {edu.year}
+                </p>
+                <p className="text-xl font-semibold leading-snug tracking-tight">
+                  {edu.degree}
+                </p>
+                <p className="text-subtle">{edu.school}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   )
 }
