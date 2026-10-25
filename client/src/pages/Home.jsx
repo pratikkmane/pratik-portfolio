@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import HeroSignals from '../components/HeroSignals'
 
 const fade = (delay) => ({
   initial: { opacity: 0, y: 20 },
@@ -10,11 +11,11 @@ function Home() {
   return (
     <section
       id="home"
-      className="grid min-h-[88svh] items-center gap-10 px-5 pb-16 pt-32 sm:px-8 md:pt-28 lg:grid-cols-12 lg:gap-8"
+      className="grid min-h-[88svh] items-center gap-10 px-5 pb-16 pt-32 sm:px-8 md:pt-28 lg:grid-cols-12 lg:gap-8 2xl:grid-cols-[auto_minmax(0,1fr)_auto] 2xl:gap-12"
     >
       <motion.figure
         {...fade(0)}
-        className="relative order-first mx-auto aspect-[4/5] w-[min(100%,calc(52svh*0.8),21rem)] lg:order-last lg:col-span-5 lg:mx-0 lg:w-[min(100%,calc(70svh*0.8),34rem)] lg:justify-self-end"
+        className="relative order-first mx-auto aspect-[4/5] w-[min(100%,calc(52svh*0.8),21rem)] lg:order-3 lg:col-span-5 lg:mx-0 lg:w-[min(100%,calc(70svh*0.8),34rem)] lg:justify-self-end 2xl:col-span-1 2xl:w-[min(calc(70svh*0.8),34rem,28vw)]"
       >
         <img
           src="/hero.jpg"
@@ -29,10 +30,10 @@ function Home() {
         </figcaption>
       </motion.figure>
 
-      <div className="text-center lg:col-span-7 lg:text-left">
+      <div className="text-center lg:order-1 lg:col-span-7 lg:text-left 2xl:col-span-1">
         <motion.h1
           {...fade(0.1)}
-          className="text-[clamp(2.75rem,12vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] lg:text-[clamp(5rem,10.5vw,14rem)]"
+          className="text-[clamp(2.75rem,12vw,5.5rem)] font-black uppercase leading-[0.9] tracking-[-0.03em] lg:text-[clamp(5rem,12vw,14rem)] 2xl:text-[clamp(8rem,10.5vw,14rem)]"
         >
           Pratik
           <br className="hidden lg:block" /> Mane
@@ -72,6 +73,8 @@ function Home() {
           </a>
         </motion.div>
       </div>
+
+      <HeroSignals />
     </section>
   )
 }
